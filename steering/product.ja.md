@@ -1,20 +1,19 @@
 # Product Context
 
 **Project**: gachi-todo
-**Last Updated**: 2026-02-19
+**Last Updated**: 2026-02-20
 **Version**: 1.0
 
 ---
 
 ## Product Vision
 
-**Vision Statement**: {{VISION_STATEMENT}}
+**Vision Statement**: 開いた瞬間にやる気になる、TODOアプリ。
 
-> [1-2 paragraph description of what this product aims to achieve and why it exists]
+自分の目標とタスクを紐づけて管理し、完了するたびにキャラクターが喜ぶ。  
+積み重ねが「自分の軌跡」として可視化され、継続したくなる体験を提供する。
 
-**Mission**: {{MISSION_STATEMENT}}
-
-> [How the product achieves its vision]
+**Mission**: ADHDっぽい傾向を持つ人が「また続けた」と思える仕組みを作る。
 
 ---
 
@@ -22,21 +21,24 @@
 
 ### What is gachi-todo?
 
-目標に紐づけてタスクを管理するPWA
-
-> [2-3 paragraphs explaining the product, its purpose, and core value proposition]
+目標に紐づけてタスクを管理するPWA（Progressive Web App）。  
+サーバーレス・ローカルファースト設計で、インストール不要、起動即使える。
 
 ### Problem Statement
 
-**Problem**: {{PROBLEM_STATEMENT}}
+**Problem**: 「TODOアプリを何度も挫折する人」が、また挫折する理由は「管理コスト」にある。
 
-> [What problem does this product solve? What pain points does it address?]
+- アプリを開くたびに大量のタスクが並んでいて、何をすればいいかわからない
+- タスクを完了しても達成感がなく、続ける動機がない
+- 複雑な機能が「ちゃんと使わないといけない」プレッシャーになる
 
 ### Solution
 
-**Solution**: {{SOLUTION_STATEMENT}}
+**Solution**: 「考えさせない」「キャラが喜ぶ」「軌跡が見える」3つの仕掛けで継続を設計する。
 
-> [How does this product solve the problem? What makes it unique?]
+1. **ゼロ認知起動** — アプリを開いた瞬間に「今日やること1つ」だけが表示される
+2. **愛着の対象を作る** — タスクを完了するとキャラクターが喜ぶ（義務感を愛着に転換）
+3. **積み重ねを作品にする** — ヒートマップ・年次まとめで「自分の軌跡」が見える（Phase 2）
 
 ---
 
@@ -44,529 +46,169 @@
 
 ### Primary Users
 
-#### User Persona 1: {{PERSONA_1_NAME}}
+#### Persona: 「また挫折した」ユーザー（ADHDっぽい傾向）
 
-**Demographics**:
-
-- **Role**: {{ROLE}}
-- **Organization Size**: {{ORG_SIZE}}
-- **Technical Level**: {{TECH_LEVEL}}
-
-**Goals**:
-
-- [Goal 1]
-- [Goal 2]
-- [Goal 3]
-
-**Pain Points**:
-
-- [Pain point 1]
-- [Pain point 2]
-- [Pain point 3]
-
-**Use Cases**:
-
-- [Use case 1]
-- [Use case 2]
-- [Use case 3]
-
----
-
-#### User Persona 2: {{PERSONA_2_NAME}}
-
-**Demographics**:
-
-- **Role**: {{ROLE}}
-- **Organization Size**: {{ORG_SIZE}}
-- **Technical Level**: {{TECH_LEVEL}}
+**特徴**:
+- ADHDっぽい傾向を持つ（未診断含む）
+- TODOアプリを3つ以上試したことがある
+- 「アプリを開くのが億劫」になってやめた経験がある
 
 **Goals**:
-
-- [Goal 1]
-- [Goal 2]
+- 「今日これだけやれた」という小さな達成感を毎日積み上げたい
+- 大きな目標（英語・運動・副業）を、日々の行動に落とし込みたい
+- 管理が面倒にならないシンプルなツールが欲しい
 
 **Pain Points**:
-
-- [Pain point 1]
-- [Pain point 2]
+- TODOリストが増えすぎて何から手を付けるかわからない
+- 完了してもなんの達成感もなく、続ける気にならない
+- 「ちゃんと使わないといけない」アプリの複雑さがプレッシャー
 
 **Use Cases**:
-
-- [Use case 1]
-- [Use case 2]
-
----
-
-### Secondary Users
-
-- **{{SECONDARY_USER_1}}**: [Description and role]
-- **{{SECONDARY_USER_2}}**: [Description and role]
+- 朝、アプリを開いて「今日やること1つ」を確認する
+- タスクを完了してキャラクターの喜びを見る
+- 週に1回、先週の目標とタスクを振り返る（Phase 2）
 
 ---
 
-## Market & Business Context
+## 設計原則（3原則）
 
-### Market Opportunity
+### 1. ゼロ認知起動（P14: 迷わない安心感）
+アプリを開いた瞬間に「今日やること1つ」が表示される。  
+ユーザーに考えさせない。選ばせない。ただ目の前のことをやるだけ。
 
-**Market Size**: {{MARKET_SIZE}}
+### 2. 愛着の対象を作る（P2: たまごっち効果 + P11: 義務感転嫁）
+キャラクターがタスク完了に連動して喜ぶ。  
+「タスクをこなす義務感」を「キャラクターのために完了したい」という愛着に転換する。
 
-**Target Market**: {{TARGET_MARKET}}
+### 3. 積み重ねを作品にする（P13: 作品化欲求）
+ヒートマップ・年次まとめで「自分の軌跡」が可視化される。（Phase 2）  
+継続そのものが「作品」になり、やめたくなくなる。
 
-> [Description of the market opportunity, competitive landscape, and positioning]
+---
 
-### Business Model
+## 動機パターン（優先順位）
 
-**Revenue Model**: {{REVENUE_MODEL}}
-
-> Examples: SaaS subscription, One-time purchase, Freemium, Usage-based
-
-**Pricing Tiers** (if applicable):
-
-- **Free Tier**: [Features, limitations]
-- **Pro Tier**: ${{PRICE}}/month - [Features]
-- **Enterprise Tier**: Custom pricing - [Features]
-
-### Competitive Landscape
-
-| Competitor       | Strengths   | Weaknesses   | Our Differentiation   |
-| ---------------- | ----------- | ------------ | --------------------- |
-| {{COMPETITOR_1}} | [Strengths] | [Weaknesses] | [How we're different] |
-| {{COMPETITOR_2}} | [Strengths] | [Weaknesses] | [How we're different] |
+| 優先度 | パターン | 実装方針 |
+|--------|----------|----------|
+| **P14** | 迷わない安心感（最重要） | 起動=即「今日のタスク1つ」表示 |
+| **P2** | たまごっち効果 | タスク完了でキャラが喜ぶアニメーション |
+| **P13** | 作品化欲求 | ヒートマップ・年次まとめ（Phase 2） |
+| **P3** | 前払い進捗効果 | 目標登録=すでに始まっている感 |
+| **P9** | 希少性効果 | デイリーチャレンジ（Phase 2） |
 
 ---
 
 ## Core Product Capabilities
 
-### Must-Have Features (MVP)
+### Must-Have Features（Phase 1 MVP）
 
-1. **{{FEATURE_1}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
+1. **今日のタスク1件表示（ホーム画面）**
+   - **Description**: 起動時に今日やることが1つだけ大きく表示される
+   - **User Value**: 考えなくていい、開いた瞬間に行動できる
    - **Priority**: P0 (Critical)
 
-2. **{{FEATURE_2}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
+2. **タスク管理（追加・完了・削除）**
+   - **Description**: タスクの登録、完了、削除
+   - **User Value**: 最小限の操作でタスクを回せる
    - **Priority**: P0 (Critical)
 
-3. **{{FEATURE_3}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
+3. **目標との紐付け**
+   - **Description**: タスクを目標に関連付けて登録できる
+   - **User Value**: 「なぜやるのか」が見えてモチベーションが続く
    - **Priority**: P0 (Critical)
 
-### High-Priority Features (Post-MVP)
+4. **キャラクター完了リアクション**
+   - **Description**: タスク完了時にキャラクターが喜ぶアニメーション
+   - **User Value**: 達成感が得られ、次も完了したくなる
+   - **Priority**: P0 (Critical)
 
-4. **{{FEATURE_4}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
+5. **PWA対応（オフライン・インストール）**
+   - **Description**: ホーム画面追加、オフライン動作
+   - **User Value**: ネイティブアプリのように使える
+   - **Priority**: P0 (Critical)
+
+### High-Priority Features（Phase 2）
+
+6. **ヒートマップ（継続の可視化）**
+   - **Description**: 完了タスクを日付別にヒートマップ表示
+   - **User Value**: 積み重ねが「作品」として見える
    - **Priority**: P1 (High)
 
-5. **{{FEATURE_5}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
+7. **キャラクター成長・進化**
+   - **Description**: タスク完了数に応じてキャラが成長
+   - **User Value**: 育てる楽しさで継続を後押し
    - **Priority**: P1 (High)
 
-### Future Features (Roadmap)
-
-6. **{{FEATURE_6}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
-   - **Priority**: P2 (Medium)
-
-7. **{{FEATURE_7}}**
-   - **Description**: [What it does]
-   - **User Value**: [Why users need it]
-   - **Priority**: P3 (Low)
+8. **デイリーチャレンジ**
+   - **Description**: 毎日変わるチャレンジタスク
+   - **User Value**: 希少性で「今日だけ」の動機付け
+   - **Priority**: P1 (High)
 
 ---
 
-## Product Principles
+## Technical Constraints
 
-### Design Principles
-
-1. **{{PRINCIPLE_1}}**
-   - [Description of what this means for product decisions]
-
-2. **{{PRINCIPLE_2}}**
-   - [Description]
-
-3. **{{PRINCIPLE_3}}**
-   - [Description]
-
-**Examples**:
-
-- **Simplicity First**: Favor simple solutions over complex ones
-- **User Empowerment**: Give users control and flexibility
-- **Speed & Performance**: Fast response times (< 200ms)
-
-### User Experience Principles
-
-1. **{{UX_PRINCIPLE_1}}**
-   - [How this guides UX decisions]
-
-2. **{{UX_PRINCIPLE_2}}**
-   - [How this guides UX decisions]
-
-**Examples**:
-
-- **Progressive Disclosure**: Show advanced features only when needed
-- **Accessibility First**: WCAG 2.1 AA compliance
-- **Mobile-First**: Design for mobile, enhance for desktop
+- **アーキテクチャ**: サーバーレス（外部サーバー不要）
+- **ストレージ**: IndexedDB（ローカルのみ）
+- **フレームワーク**: React + TypeScript + Vite
+- **PWA**: Service Worker + manifest.json
+- **デプロイ先**: Cloudflare Pages または Vercel（静的ホスティング）
+- **認証不要**: アカウント登録なしで即使える
 
 ---
 
-## Success Metrics
+## Success Metrics（Phase 1）
 
-### Key Performance Indicators (KPIs)
-
-#### Business Metrics
-
-| Metric                              | Target            | Measurement    |
-| ----------------------------------- | ----------------- | -------------- |
-| **Monthly Active Users (MAU)**      | {{MAU_TARGET}}    | [How measured] |
-| **Monthly Recurring Revenue (MRR)** | ${{MRR_TARGET}}   | [How measured] |
-| **Customer Acquisition Cost (CAC)** | ${{CAC_TARGET}}   | [How measured] |
-| **Customer Lifetime Value (LTV)**   | ${{LTV_TARGET}}   | [How measured] |
-| **Churn Rate**                      | < {{CHURN_RATE}}% | [How measured] |
-
-#### Product Metrics
-
-| Metric                       | Target                | Measurement    |
-| ---------------------------- | --------------------- | -------------- |
-| **Daily Active Users (DAU)** | {{DAU_TARGET}}        | [How measured] |
-| **Feature Adoption Rate**    | > {{ADOPTION_RATE}}%  | [How measured] |
-| **User Retention (Day 7)**   | > {{RETENTION_RATE}}% | [How measured] |
-| **Net Promoter Score (NPS)** | > {{NPS_TARGET}}      | [How measured] |
-
-#### Technical Metrics
-
-| Metric                      | Target  | Measurement             |
-| --------------------------- | ------- | ----------------------- |
-| **API Response Time (p95)** | < 200ms | Monitoring dashboard    |
-| **Uptime**                  | 99.9%   | Status page             |
-| **Error Rate**              | < 0.1%  | Error tracking (Sentry) |
-| **Page Load Time**          | < 2s    | Web vitals              |
+| メトリクス | 目標 | 測定方法 |
+|-----------|------|----------|
+| **起動→タスク表示** | 0.5秒以内 | ローカル計測 |
+| **LCP（初回）** | 2.5秒以内 | Web Vitals |
+| **タスク完了率** | 7日間継続率 > 40% | IndexedDBの完了記録 |
+| **キャラリアクション表示** | タスク完了から0.3秒以内 | アニメーション計測 |
 
 ---
 
 ## Product Roadmap
 
-### Phase 1: MVP (Months 1-3)
+### Phase 1: MVP（現在）
 
-**Goal**: Launch minimum viable product
-
-**Features**:
-
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-
-**Success Criteria**:
-
-- [Criterion 1]
-- [Criterion 2]
-
----
-
-### Phase 2: Growth (Months 4-6)
-
-**Goal**: Achieve product-market fit
+**Goal**: 「開いた瞬間に今日のタスクが1つ出てきて、完了したらキャラが喜ぶ」
 
 **Features**:
-
-- [Feature 4]
-- [Feature 5]
-- [Feature 6]
+- 今日のタスク1件表示
+- タスク管理（追加・完了・削除）
+- 目標との紐付け
+- キャラクター完了リアクション
+- PWA対応（オフライン・インストール）
 
 **Success Criteria**:
-
-- [Criterion 1]
-- [Criterion 2]
+- 起動から今日のタスク表示まで0.5秒以内
+- タスク完了→キャラリアクションが気持ちいい
 
 ---
 
-### Phase 3: Scale (Months 7-12)
+### Phase 2: 継続の設計
 
-**Goal**: Scale to {{USER_TARGET}} users
+**Goal**: 「また来たくなる」仕組みを追加
 
 **Features**:
-
-- [Feature 7]
-- [Feature 8]
-- [Feature 9]
-
-**Success Criteria**:
-
-- [Criterion 1]
-- [Criterion 2]
+- ヒートマップ（継続の可視化）
+- キャラクター成長・進化
+- デイリーチャレンジ
+- 年次まとめ
 
 ---
 
-## User Workflows
+### Phase 3: 深化
 
-### Primary Workflow 1: {{WORKFLOW_1_NAME}}
+**Goal**: 「やめられない」体験へ
 
-**User Goal**: {{USER_GOAL}}
-
-**Steps**:
-
-1. User [action 1]
-2. System [response 1]
-3. User [action 2]
-4. System [response 2]
-5. User achieves [goal]
-
-**Success Criteria**:
-
-- User completes workflow in < {{TIME}} minutes
-- Success rate > {{SUCCESS_RATE}}%
+**Features**:
+- データエクスポート
+- テーマ・スキン選択
+- 複数キャラクター
 
 ---
 
-### Primary Workflow 2: {{WORKFLOW_2_NAME}}
-
-**User Goal**: {{USER_GOAL}}
-
-**Steps**:
-
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-
-**Success Criteria**:
-
-- [Criterion 1]
-- [Criterion 2]
-
----
-
-## Business Domain
-
-### Domain Concepts
-
-Key concepts and terminology used in this domain:
-
-1. **{{CONCEPT_1}}**: [Definition and importance]
-2. **{{CONCEPT_2}}**: [Definition and importance]
-3. **{{CONCEPT_3}}**: [Definition and importance]
-
-**Example for SaaS Authentication**:
-
-- **Identity Provider (IdP)**: Service that authenticates users
-- **Single Sign-On (SSO)**: One login for multiple applications
-- **Multi-Factor Authentication (MFA)**: Additional verification step
-
-### Business Rules
-
-1. **{{RULE_1}}**
-   - [Description of business rule]
-   - **Example**: [Concrete example]
-
-2. **{{RULE_2}}**
-   - [Description]
-   - **Example**: [Example]
-
-**Example for E-commerce**:
-
-- **Inventory Reservation**: Reserved items held for 10 minutes during checkout
-- **Refund Window**: Refunds allowed within 30 days of purchase
-
----
-
-## Constraints & Requirements
-
-### Business Constraints
-
-- **Budget**: ${{BUDGET}}
-- **Timeline**: {{TIMELINE}}
-- **Team Size**: {{TEAM_SIZE}} engineers
-- **Launch Date**: {{LAUNCH_DATE}}
-
-### Compliance Requirements
-
-- **{{COMPLIANCE_1}}**: [Description, e.g., GDPR, SOC 2, HIPAA]
-- **{{COMPLIANCE_2}}**: [Description]
-- **Data Residency**: [Requirements, e.g., EU data stays in EU]
-
-### Non-Functional Requirements
-
-- **Performance**: API response < 200ms (95th percentile)
-- **Availability**: 99.9% uptime SLA
-- **Scalability**: Support {{CONCURRENT_USERS}} concurrent users
-- **Security**: OWASP Top 10 compliance
-- **Accessibility**: WCAG 2.1 AA compliance
-
----
-
-## Stakeholders
-
-### Internal Stakeholders
-
-| Role                    | Name                 | Responsibilities                  |
-| ----------------------- | -------------------- | --------------------------------- |
-| **Product Owner**       | {{PO_NAME}}          | Vision, roadmap, priorities       |
-| **Tech Lead**           | {{TECH_LEAD_NAME}}   | Architecture, technical decisions |
-| **Engineering Manager** | {{EM_NAME}}          | Team management, delivery         |
-| **QA Lead**             | {{QA_LEAD_NAME}}     | Quality assurance, testing        |
-| **Design Lead**         | {{DESIGN_LEAD_NAME}} | UX/UI design                      |
-
-### External Stakeholders
-
-| Role                        | Name        | Responsibilities            |
-| --------------------------- | ----------- | --------------------------- |
-| **Customer Advisory Board** | [Members]   | Product feedback            |
-| **Investors**               | [Names]     | Funding, strategic guidance |
-| **Partners**                | [Companies] | Integration, co-marketing   |
-
----
-
-## Go-to-Market Strategy
-
-### Launch Strategy
-
-**Target Launch Date**: {{LAUNCH_DATE}}
-
-**Launch Phases**:
-
-1. **Private Beta** ({{START_DATE}} - {{END_DATE}})
-   - Invite-only, 50 beta users
-   - Focus: Gather feedback, fix critical bugs
-
-2. **Public Beta** ({{START_DATE}} - {{END_DATE}})
-   - Open signup
-   - Focus: Validate product-market fit
-
-3. **General Availability** ({{LAUNCH_DATE}})
-   - Full public launch
-   - Focus: Acquisition and growth
-
-### Marketing Channels
-
-- **{{CHANNEL_1}}**: [Strategy, e.g., Content marketing, SEO]
-- **{{CHANNEL_2}}**: [Strategy, e.g., Social media, Twitter/LinkedIn]
-- **{{CHANNEL_3}}**: [Strategy, e.g., Paid ads, Google/Facebook]
-- **{{CHANNEL_4}}**: [Strategy, e.g., Partnerships, integrations]
-
----
-
-## Risk Assessment
-
-### Product Risks
-
-| Risk       | Probability     | Impact          | Mitigation            |
-| ---------- | --------------- | --------------- | --------------------- |
-| {{RISK_1}} | High/Medium/Low | High/Medium/Low | [Mitigation strategy] |
-| {{RISK_2}} | High/Medium/Low | High/Medium/Low | [Mitigation strategy] |
-
-**Example Risks**:
-
-- **Low adoption**: Users don't understand value → Clear onboarding, demos
-- **Performance issues**: System slow at scale → Load testing, optimization
-- **Security breach**: Data compromised → Security audit, penetration testing
-
----
-
-## Customer Support
-
-### Support Channels
-
-- **Email**: support@{{COMPANY}}.com
-- **Chat**: In-app live chat (business hours)
-- **Documentation**: docs.{{COMPANY}}.com
-- **Community**: Forum/Discord/Slack
-
-### Support SLA
-
-| Tier              | Response Time | Resolution Time |
-| ----------------- | ------------- | --------------- |
-| **Critical (P0)** | < 1 hour      | < 4 hours       |
-| **High (P1)**     | < 4 hours     | < 24 hours      |
-| **Medium (P2)**   | < 24 hours    | < 3 days        |
-| **Low (P3)**      | < 48 hours    | Best effort     |
-
----
-
-## Product Analytics
-
-### Analytics Tools
-
-- **{{ANALYTICS_TOOL_1}}**: [Purpose, e.g., Google Analytics, Mixpanel]
-- **{{ANALYTICS_TOOL_2}}**: [Purpose, e.g., Amplitude, Heap]
-
-### Events to Track
-
-| Event               | Description            | Purpose           |
-| ------------------- | ---------------------- | ----------------- |
-| `user_signup`       | New user registration  | Track acquisition |
-| `feature_used`      | User uses core feature | Track engagement  |
-| `payment_completed` | User completes payment | Track conversion  |
-| `error_occurred`    | User encounters error  | Track reliability |
-
----
-
-## Localization & Internationalization
-
-### Supported Languages
-
-- **Primary**: English (en-US)
-- **Secondary**: [Languages, e.g., Japanese (ja-JP), Spanish (es-ES)]
-
-### Localization Strategy
-
-- **UI Strings**: i18n framework (next-intl, react-i18next)
-- **Date/Time**: Locale-aware formatting
-- **Currency**: Multi-currency support
-- **Right-to-Left (RTL)**: Support for Arabic, Hebrew (if needed)
-
----
-
-## Data & Privacy
-
-### Data Collection
-
-**What data we collect**:
-
-- User account information (email, name)
-- Usage analytics (anonymized)
-- Error logs (for debugging)
-
-**What data we DON'T collect**:
-
-- [Sensitive data we avoid, e.g., passwords (only hashed), payment details (tokenized)]
-
-### Privacy Policy
-
-- **GDPR Compliance**: Right to access, delete, export data
-- **Data Retention**: [Retention period, e.g., 90 days for logs]
-- **Third-Party Sharing**: [Who we share data with, why]
-
----
-
-## Integrations
-
-### Existing Integrations
-
-| Integration       | Purpose   | Priority |
-| ----------------- | --------- | -------- |
-| {{INTEGRATION_1}} | [Purpose] | P0       |
-| {{INTEGRATION_2}} | [Purpose] | P1       |
-
-### Planned Integrations
-
-| Integration       | Purpose   | Timeline |
-| ----------------- | --------- | -------- |
-| {{INTEGRATION_3}} | [Purpose] | Q2 2025  |
-| {{INTEGRATION_4}} | [Purpose] | Q3 2025  |
-
----
-
-## Changelog
-
-### Version 1.1 (Planned)
-
-- [Future product updates]
-
----
-
-**Last Updated**: 2026-02-19
-**Maintained By**: {{MAINTAINER}}
+**Last Updated**: 2026-02-20
+**Maintained By**: クロウ候 / imudak
