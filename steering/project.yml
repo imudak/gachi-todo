@@ -1,0 +1,12 @@
+# MUSUBI Project Configuration
+name: gachi-todo
+description: 目標に紐づけてタスクを管理するPWA
+locale: ja
+version: "0.1.0"
+created: 2026-02-19
+
+# Technology Stack
+tech_stack:
+  approach: single
+  languages:
+    - javascript
